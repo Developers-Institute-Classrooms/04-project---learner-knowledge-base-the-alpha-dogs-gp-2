@@ -7,4 +7,6 @@ test("renders learn react link", () => {
   expect(linkElement).toBeInTheDocument();
 });
 
+// to exit
+
 afterAll(() => setTimeout(() => process.exit(), 1000));
