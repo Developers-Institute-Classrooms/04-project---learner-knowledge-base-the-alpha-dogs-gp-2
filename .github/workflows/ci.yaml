@@ -26,10 +26,9 @@ jobs:
         run: docker-compose exec -T api npm run db-migrations:up
 
       - name: run tests on the client
-        run: docker-compose exec client npm test
+        run: docker-compose exec -T client npm test
 
       - name: run tests on the api
-        run: docker-compose exec api npm test
+        run: docker-compose exec -T api npm test
 
       # you also need to run tests on the client
-      
