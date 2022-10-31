@@ -17,9 +17,6 @@ services:
     command: npm run start
     depends_on:
       - db
-    volumes:
-      - ./api/migrations:/app/migrations
-      - ./api:/app
   client:
     build:
       context: ./client
