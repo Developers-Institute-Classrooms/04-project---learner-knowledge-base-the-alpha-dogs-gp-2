@@ -29,5 +29,5 @@ jobs:
         run: docker-compose exec -T api npm test
 
       - name: run tests on the client
-        run: docker-compose exec -T client npm test
+        run: docker-compose exec -T client CI=true npm test
 
