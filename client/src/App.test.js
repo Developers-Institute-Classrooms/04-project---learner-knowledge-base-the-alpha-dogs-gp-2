@@ -9,4 +9,4 @@ test("renders learn react link", () => {
 
 // to exit tests in workflow
 
-afterAll(() => setTimeout(() => process.exit(), 1000));
+afterAll(() => process.exit);
