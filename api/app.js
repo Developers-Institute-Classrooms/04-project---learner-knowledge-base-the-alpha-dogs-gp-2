@@ -5,6 +5,8 @@ const get_db = require("./db");
 app.use(cors());
 app.use(express.json());
 
+//Get route
+
 app.get("/getData", async (req, res) => {
   try {
     const db = await get_db();
