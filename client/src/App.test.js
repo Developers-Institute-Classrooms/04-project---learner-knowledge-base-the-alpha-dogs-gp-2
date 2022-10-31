@@ -7,6 +7,6 @@ test("renders learn react link", () => {
   expect(linkElement).toBeInTheDocument();
 });
 
-// to exit
+// to exit tests in workflow
 
 afterAll(() => setTimeout(() => process.exit(), 1000));
