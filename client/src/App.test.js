@@ -6,3 +6,5 @@ test("renders learn react link", () => {
   const linkElement = screen.getByText(/Test/i);
   expect(linkElement).toBeInTheDocument();
 });
+
+afterAll(() => setTimeout(() => process.exit(), 1000));
