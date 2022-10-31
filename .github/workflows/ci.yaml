@@ -15,7 +15,7 @@ jobs:
         with:
           node_version: 14.x
       - name: start containers
-        run: docker compose -f "docker-compose.yaml" up -d --build
+        run: docker-compose -f "docker-compose.yaml" up -d --build
 
       # use this step to give time for containers to start
       - name: wait for containers to be ready
@@ -24,7 +24,7 @@ jobs:
 
       - name: run migrations
 
-        run: docker compose exec api npm run db-migrations:up
+        run: docker-compose exec -T api npm run db-migrations:up
 
       - name: run tests on the api
         run: docker compose exec -t api npm test
