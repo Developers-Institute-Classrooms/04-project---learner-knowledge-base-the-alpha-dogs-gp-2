@@ -31,6 +31,3 @@ jobs:
       - name: run tests on the client
         run: docker-compose exec -T client npm test
 
-
-
-      # you also need to run tests on the client
