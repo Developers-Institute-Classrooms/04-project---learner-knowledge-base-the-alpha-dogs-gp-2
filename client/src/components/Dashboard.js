@@ -1,5 +1,9 @@
+import { useLocation } from "react-router-dom";
+
 const Dashboard = () => {
-  return <p className="list-item">UNDER CONSTRUCTION</p>;
+  const location = useLocation();
+  const { from } = location.state;
+  return <p className="list-item">{from}</p>;
 };
 
 export default Dashboard;

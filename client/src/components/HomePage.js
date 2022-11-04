@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
-    <div>
-      <Link to={"/questions/" + 1} className="list-item">
-        View Questions
-      </Link>
-    </div>
+    <Link
+      to={`/dashboard`}
+      state={{ from: "This is the props text" }}
+      className="list-item"
+    >
+      PASS THE PROP TO DASHBOARD
+    </Link>
   );
 };
 
