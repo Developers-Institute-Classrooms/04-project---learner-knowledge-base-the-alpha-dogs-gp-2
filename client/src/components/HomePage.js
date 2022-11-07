@@ -6,7 +6,7 @@ const HomePage = () => {
       to={`/dashboard`}
       state={{ from: "This is the props text" }}
       className="list-item"
-      style={{ pointerEvents: false ? "" : "none" }}
+      style={{ pointerEvents: true ? "" : "none" }}
     >
       PASS THE PROP TO DASHBOARD
     </Link>
