@@ -30,6 +30,8 @@ const Dashboard = () => {
       <h1> dash board</h1>
       {newPosts[0].map((newPost, index) => (
         <Link
+          key={newPost.questionid}
+          id={newPost.questionid}
           to={"/editquestion/" + newPost.questionid}
           state={{
             questionId: newPost.questionid,
