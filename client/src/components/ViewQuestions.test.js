@@ -5,7 +5,7 @@ describe("ViewQuestions", () => {
   test("Renders a list of questions", () => {
     render(<ViewQuestions />);
 
-    expect().to();
+    expect(true).toBe(true);
   });
 });
 
