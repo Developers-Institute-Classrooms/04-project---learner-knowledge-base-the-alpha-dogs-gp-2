@@ -16,7 +16,7 @@ app.use(express.json());
 
 //routes
 app.use("/topics", getTopicsRouter);
-app.use("/questions/:topicId", getQuestionsRouter);
+app.use("/questions", getQuestionsRouter);
 app.use("/postquestion/:topicId", postQuestionsRouter);
 app.use("/answers/:questionId", getAnswersRouter);
 app.use("/postanswer/:questionId", postAnswersRouter);

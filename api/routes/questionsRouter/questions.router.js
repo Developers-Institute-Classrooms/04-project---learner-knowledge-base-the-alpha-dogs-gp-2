@@ -1,9 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const questionsRepository = require("./questions.repository");
 
-router.use("/", (req, res, next) => {
+router.get("/:topicId", async (req, res, next) => {
   try {
-    throw new Error("Route is under maintenance");
+    const { topicId } = req.params;
+    const response = await questionsRepository.getQuestions(topicId);
+    return res.json(response).status(200);
   } catch (err) {
     next(err);
   }
