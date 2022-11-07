@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 const ViewQuestions = () => {
   const { topicId } = useParams();
-  const [questions, setQuestions] = useState([{}]);
+  const [questions, setQuestions] = useState([{ name: "Loading..." }]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,7 +12,13 @@ const ViewQuestions = () => {
       );
 
       const data = await response.json();
-      setQuestions(data);
+
+      if (response.ok === false) {
+        setQuestions([{ description: "Oops, something went wrong!" }]);
+        return;
+      } else {
+        setQuestions(data);
+      }
     };
 
     fetchData();
@@ -20,7 +26,7 @@ const ViewQuestions = () => {
 
   return (
     <>
-      <p>{questions[0].name}</p>
+      <p className="title">{questions[0].name}</p>
       {questions.map((e, i) => {
         return (
           <Link key={i} to={"/answers/" + e.id} className="list-item">

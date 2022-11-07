@@ -33,8 +33,8 @@ router.get(
         [questionId]
       );
 
-      if (!checkQuestionId[0]) {
-        return res.json({ message: "ID not found" }).status(404);
+      if (checkQuestionId.rows.length === 0) {
+        return res.status(404).json({ message: "ID not found" });
       }
 
       const allAnswers = await repository.getAnswers(questionId);

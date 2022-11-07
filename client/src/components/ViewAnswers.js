@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 const ViewAnswers = () => {
   const { questionId } = useParams();
 
-  const [answers, setAnswers] = useState([{}]);
+  const [answers, setAnswers] = useState([{ answerdescription: "Loading" }]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,27 +12,29 @@ const ViewAnswers = () => {
         `http://localhost:5001/answers/${questionId}`
       );
       const data = await response.json();
-      setAnswers(data);
+      if (response.ok === false) {
+        setAnswers([{ answerdescription: "Oops, something went wrong!" }]);
+        return;
+      } else {
+        setAnswers(data);
+      }
     };
     fetchData();
   }, [questionId]);
-  console.log(answers[0].questiondescription);
+
   return (
     <>
-      <div>{answers[0].questiondescription}</div>
-      {answers.map((answer) => {
+      <div className="title">{answers[0].questiondescription}</div>
+      {answers.map((answer, i) => {
         return (
-          <>
-            <Link
-              key={answer.answerid}
-              to={"/editanswers/" + answer.answerid}
-              className="list-item"
-            >
-              {answer.answerdescription}
-              <br />
-              <button>Edit Answer</button>
-            </Link>
-          </>
+          <Link
+            key={i}
+            to={"/editanswers/" + answer.answerid}
+            className="list-item"
+            style={{ pointerEvents: false ? "" : "none" }}
+          >
+            {answer.answerdescription}
+          </Link>
         );
       })}
     </>
