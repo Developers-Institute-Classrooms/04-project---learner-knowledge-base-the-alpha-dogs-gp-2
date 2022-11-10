@@ -21,7 +21,7 @@ const pathParamsSchema = Joi.object().keys({
   topicId: Joi.number().integer().min(1),
 });
 
-router.get(
+router.post(
   "/:topicId",
   pathParamValidationMiddleware(pathParamsSchema),
   async (req, res, next) => {

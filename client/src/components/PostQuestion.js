@@ -20,7 +20,7 @@ const PostQuestion = () => {
     };
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/${topicId}`,
+        `${process.env.REACT_APP_API_URL}/postquestion/${topicId}`,
         {
           method: "POST",
           headers: {
