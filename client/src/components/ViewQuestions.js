@@ -45,6 +45,9 @@ const ViewQuestions = () => {
           </Link>
         );
       })}
+      <Link to={`/postquestion/${topicId}`} className="list-item">
+        <b>POST QUESTIONS</b>
+      </Link>
     </>
   );
 };
