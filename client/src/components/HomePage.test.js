@@ -69,7 +69,7 @@ describe("When the user is on the HomePage,", () => {
     global.fetch.mockRestore();
   });
 
-  it("it renders an error message when fetch fails", async () => {
+  it("an error message renders when fetch fails", async () => {
     //Mock an unsuccesful fetch response (ie status 500, internal server error)
     jest.spyOn(global, "fetch").mockImplementation(() =>
       Promise.resolve({
