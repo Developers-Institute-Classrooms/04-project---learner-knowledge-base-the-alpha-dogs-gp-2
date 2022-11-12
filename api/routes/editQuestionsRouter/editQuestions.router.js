@@ -34,7 +34,7 @@ router.put(
         isReviewed
       );
       if (question) {
-        return response.status(204);
+        return response.status(204).json({ message: "Edit Successful" });
       }
       if (!question) {
         return response
@@ -55,7 +55,7 @@ router.delete(
       const { questionId } = request.params;
       const result = await questionsRepo.deleteQuestion(questionId);
       if (result) {
-        return response.status(204);
+        return response.status(204).json({ message: "Question Deleted" });
       }
       if (!result) {
         return response
@@ -72,15 +72,19 @@ router.get(
   "/:questionId",
   pathParamValidationMiddleware(pathParamsSchema),
   async (request, response, next) => {
-    const { questionId } = request.params;
-    const question = await questionsRepo.getQuestion(questionId);
-    if (question) {
-      return response.status(200).json(question);
-    }
-    if (!question) {
-      return response
-        .status(400)
-        .json({ messgae: "Invalid request. Question does not exists." });
+    try {
+      const { questionId } = request.params;
+      const question = await questionsRepo.getQuestion(questionId);
+      if (question) {
+        return response.status(200).json(question);
+      }
+      if (!question) {
+        return response
+          .status(400)
+          .json({ messgae: "Invalid request. Question does not exists." });
+      }
+    } catch (error) {
+      next(error);
     }
   }
 );

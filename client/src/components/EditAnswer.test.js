@@ -1,22 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import EditAnswer from "./EditAnswer";
 describe("EditAnswer Page", () => {
-  let container = null;
-  beforeEach(() => {
-    // setup a DOM element as a render target
-    container = document.createElement("div");
-    document.body.appendChild(container);
-  });
 
-  afterEach(() => {
-    // cleanup on exiting
-    unmountComponentAtNode(container);
-    container.remove();
-    container = null;
-  });
   test("Renders an EditAnswer Page with checkboxes and button", async () => {
     render(
       <Router>
@@ -38,7 +25,6 @@ describe("EditAnswer Page", () => {
         <Router>
           <EditAnswer />
         </Router>,
-        container
       );
     });
 
@@ -58,7 +44,6 @@ describe("EditAnswer Page", () => {
         <Router>
           <EditAnswer />
         </Router>,
-        container
       );
     });
 
