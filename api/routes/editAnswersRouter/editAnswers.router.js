@@ -34,7 +34,7 @@ router.put(
         isReviewed
       );
       if (answer) {
-        return response.status(200).json({ message: "Edit Successful" });
+        return response.status(204);
       }
       if (!answer) {
         return response
@@ -55,7 +55,7 @@ router.delete(
       const { answerId } = request.params;
       const result = await answerRepo.deleteAnswer(answerId);
       if (result) {
-        return response.status(200).json({ message: "Answer Deleted" });
+        return response.status(204);
       }
       if (!result) {
         return response

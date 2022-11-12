@@ -36,7 +36,7 @@ describe("Given that the PUT and DELETE /editAnswer/:answerId route exists", () 
       .put("/editanswer/1")
       .send(body)
       .set("Accept", "application/json")
-      .expect(200);
+      .expect(204);
 
     // fetching the isStarred value after the put request has been completed
     const isStarredAfterEdit = await db.query(
@@ -85,7 +85,7 @@ describe("Given that the PUT and DELETE /editAnswer/:answerId route exists", () 
       .put("/editanswer/1")
       .send(body)
       .set("Accept", "application/json")
-      .expect(200);
+      .expect(204);
 
     // fetching the isReviewed value after the put request
     const isReviewedAfterEdit = await db.query(
@@ -192,10 +192,7 @@ describe("Given that the PUT and DELETE /editAnswer/:answerId route exists", () 
     await request(app)
       .delete("/editanswer/10")
       .set("Accept", "application/json")
-      .expect(200)
-      .expect((response) => {
-        expect(response.body.message).toBe(`Answer Deleted`);
-      });
+      .expect(204)
   });
 
   test("WHEN the path parameter for answerId is not a number THEN respond with 400 error code and an appropriate error message", async () => {
