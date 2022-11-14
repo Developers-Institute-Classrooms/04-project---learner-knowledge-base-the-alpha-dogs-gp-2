@@ -1,7 +1,9 @@
+
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import EditButton from "./EditButton";
 import styles from "./EditQuestion.module.css";
+
 
 const EditAnswer = () => {
   const { answerId } = useParams();
@@ -119,7 +121,7 @@ const EditAnswer = () => {
             data-testid="star-checkbox"
           />
         </div>
-        <EditButton information={answer} onClick={handleDelete} />
+        <button onClick={handleDelete}>Delete Answer</button >
       </div>
     </>
   );

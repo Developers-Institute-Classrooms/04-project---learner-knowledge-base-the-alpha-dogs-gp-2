@@ -94,7 +94,7 @@ const EditQuestion = () => {
   }, [star, review, questionId, starFlag, question]);
   return (
     <>
-      <h2>{question.description}</h2>
+      <h2 className="list-item">{question.description}</h2>
       <div className={styles.editbar}>
         <div>
           <label htmlFor="review">Review</label>
@@ -118,7 +118,7 @@ const EditQuestion = () => {
             data-testid="star-checkbox"
           />
         </div>
-        <EditButton information={question} onClick={handleDelete} />
+        <button onClick={handleDelete}>Delete Question</button >
       </div>
     </>
   );
