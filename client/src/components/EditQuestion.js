@@ -7,17 +7,22 @@ const EditQuestion = () => {
   const [star, setStar] = useState(false);
   const [review, setReview] = useState(false);
   const [starFlag, setStarFlag] = useState(false);
-  
+  const [error, setError] = useState(false);
+
   // to update the information as per the database
   useEffect(() => {
     const getQuestion = async () => {
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/editquestion/${questionId}`
       );
-      const data = await response.json();
-      setQuestion(data);
-      setStar(data.isstarred);
-      setReview(data.isreviewed);
+      if (response.ok) {
+        const data = await response.json();
+        setQuestion(data);
+        setStar(data.isstarred);
+        setReview(data.isreviewed);
+      } else {
+        setError(true);
+      }
     };
     getQuestion();
   }, [questionId]);
@@ -49,7 +54,7 @@ const EditQuestion = () => {
     } else {
       return (
         <div>
-          <p>Error deleting the question.</p>
+          <p>The question could not be deleted.</p>
           <Link to={`/editquestion/${questionId}`}>Back to Edit Page</Link>
         </div>
       );
@@ -91,6 +96,9 @@ const EditQuestion = () => {
     };
     edit();
   }, [star, review, questionId, starFlag, question]);
+  if(error) {
+    return (<p>The content does not exists. Please check that the questionId in the URL is correct</p>)
+  }
   return (
     <>
       <h2 className="list-item">{question.description}</h2>
@@ -117,7 +125,7 @@ const EditQuestion = () => {
             data-testid="star-checkbox"
           />
         </div>
-        <button onClick={handleDelete}>Delete Question</button >
+        <button onClick={handleDelete}>Delete Question</button>
       </div>
     </>
   );
