@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 import EditButton from "./EditButton";
 import { useNavigate } from "react-router-dom";
 
-let scope = false;
-
 const ViewQuestions = () => {
   const { topicId } = useParams();
   const [questions, setQuestions] = useState([{}]);
@@ -60,8 +58,7 @@ const ViewQuestions = () => {
                 {e.isstarred === true ? " 🔥  " : ""}
                 {e.description}
               </Link>
-
-              {scope ? <EditButton className="link" information={e} /> : <></>}
+              <EditButton className="link" information={e} />
             </div>
           );
         })

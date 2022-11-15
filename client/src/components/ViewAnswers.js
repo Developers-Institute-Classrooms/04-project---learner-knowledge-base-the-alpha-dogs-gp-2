@@ -3,34 +3,26 @@ import React, { useState, useEffect } from "react";
 import EditButton from "./EditButton";
 import { useNavigate } from "react-router-dom";
 
-let scope = false;
-
 const ViewAnswers = () => {
   const { questionId } = useParams();
-
   const [answers, setAnswers] = useState([{ answerdescription: "Loading" }]);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const result = await fetch(
-          `${process.env.REACT_APP_API_URL}/answers/${questionId}`
-        );
-
-        // fetch error handling
-
-        if (result.ok === false) {
-          setError(true);
-          return;
-        }
-        setIsLoading(false);
-        const data = await result.json();
-        setAnswers(data);
-      } catch (error) {}
+      const result = await fetch(
+        `${process.env.REACT_APP_API_URL}/answers/${questionId}`
+      );
+      // fetch error handling
+      if (result.ok === false) {
+        setError(true);
+        return;
+      }
+      setIsLoading(false);
+      const data = await result.json();
+      setAnswers(data);
     };
     fetchData();
   }, [questionId]);
@@ -63,11 +55,7 @@ const ViewAnswers = () => {
                 {answer.isstarred === true ? " ✅ " : ""}
                 {answer.answerdescription}
               </div>
-              {scope ? (
-                <EditButton information={answer} className="link" />
-              ) : (
-                <></>
-              )}
+              <EditButton information={answer} className="link" />
             </div>
           );
         })

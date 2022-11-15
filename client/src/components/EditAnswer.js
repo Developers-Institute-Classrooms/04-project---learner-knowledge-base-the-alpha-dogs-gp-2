@@ -97,9 +97,11 @@ const EditAnswer = () => {
     };
     edit();
   }, [star, review, answerId, starFlag, answer]);
+
   if(error) {
     return (<p>The content does not exists. Please check that the answerId in the URL is correct</p>)
   }
+  
   return (
     <>
       <h1 className="title">{answer.questiondescription}</h1>

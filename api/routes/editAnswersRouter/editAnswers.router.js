@@ -81,7 +81,7 @@ router.get(
       if (!answer) {
         return response
           .status(400)
-          .json({ messgae: "Invalid request. Answer does not exists." });
+          .json({ message: "Invalid request. Answer does not exists." });
       }
     } catch (error) {
       next(error);
