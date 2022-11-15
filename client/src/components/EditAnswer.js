@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import EditButton from "./EditButton";
 import styles from "./EditQuestion.module.css";
 
 

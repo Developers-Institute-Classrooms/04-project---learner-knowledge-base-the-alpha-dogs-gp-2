@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import styles from "./EditQuestion.module.css";
-import EditButton from "./EditButton";
 const EditQuestion = () => {
   const { questionId } = useParams();
   const [question, setQuestion] = useState({});
