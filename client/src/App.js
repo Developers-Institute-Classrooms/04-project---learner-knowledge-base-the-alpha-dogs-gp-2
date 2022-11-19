@@ -12,6 +12,8 @@ import LogInPage from "./components/LogInPage";
 import SignUpPage from "./components/SignUpPage";
 
 const App = () => {
+  const user = localStorage.getItem("user");
+  console.log(user)
   return (
     <>
       <header className="header">

@@ -24,7 +24,7 @@ const LoginPage = () => {
       return;
     } else {
       localStorage.setItem("x-auth-token", JSON.stringify(user.token));
-      localStorage.setItem("user", JSON.stringify(user.user));
+      localStorage.setItem("user", (user.user));
       navigate("/");
     }
   };

@@ -4,7 +4,7 @@ import EditButton from "./EditButton";
 import { useNavigate } from "react-router-dom";
 // import { FaPlusCircle } from "react-icons/fa";
 
-let scope = false;
+
 
 const ViewQuestions = () => {
   const { topicId } = useParams();
@@ -12,7 +12,10 @@ const ViewQuestions = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const token = localStorage.getItem("x-auth-token");
-  
+  const user = localStorage.getItem("user");
+  console.log(user["scope"])
+  const scope = user.scope;
+
   useEffect(()=>{ if (!token) {
     navigate(`/LogIn`);
   }},[])
